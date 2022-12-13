@@ -1,0 +1,34 @@
+Client side:
+
+import socket
+s=socket.socket()
+host=socket.gethostname()
+port=5000
+s.connect((host,port))
+mes=input("->")
+while mes.lower().strip()!='bye':
+    s.send(mes.encode())
+    data=s.recv(1024).decode()
+    print(data)
+    mes=input("->")
+s.close()
+
+
+server side
+
+import socket
+s=socket.socket()
+host=socket.gethostname()
+port=5000
+s.bind((host,port))9
+s.listen(2)
+conn , add =s.accept()
+print("Connetion  form : "+ str(add))
+while True:
+    data=conn.recv(1024).decode()
+    if not data:
+        break;
+    print(data)
+    data=input('->')
+    conn.send(data.encode())
+conn.close()

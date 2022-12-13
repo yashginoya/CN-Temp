@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+string  fun(string a,string b)
+{
+    string s="";
+    for(int i=1;i<a.size();i++)
+    {
+        if(a[i]==b[i])
+        {
+         s+="0";
+        }
+        else
+        {
+         s+="1";
+        }
+    }
+    return s;
+}
+int main()
+{
+    string data = "100100";
+    string key = "1101";
+    for(int i = 0; i < key.size() - 1; i++) {
+        data += '0';
+    }
+    int pick=key.size();
+    string t=data.substr(0,pick);
+    int n=data.size();
+    while(pick<n)
+    {
+        if(t[0]=='1')
+        {
+           
+            t=fun(key,t)+data[pick];
+            pick++;   
+        }
+        else
+        {
+            string s="";
+            for(int i=0;i<key.size();i++)
+            {
+                s+="0";
+            }
+            t=fun(s,t)+data[pick];
+            pick++;
+        } 
+    }
+    if(t[0]=='1')
+    {
+        t=fun(key,t);    
+    }
+    else
+    {
+        string s="";
+        for(int i=0;i<key.size();i++)
+        {
+            s+="0";
+        }
+        t=fun(s,t);
+    }
+    cout<<t<<endl;
+}
