@@ -1,0 +1,4 @@
+ipconfig - to get info of your sys
+tracert - trace the route of package
+nslookup - DNS add find
+ping - to sen mess from one to another
